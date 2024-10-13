@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.5 on win32)" generated="2024-10-04T10:30:22.222820" rpa="false" schemaversion="5">
+<suite id="s1" name="Tentativa login campos vazios" source="C:\Users\sandr\Downloads\cristian\QACoders\Academy\Robot-API\Tentativa_login_campos_vazios.robot">
+<test id="s1-t1" name="Validar tentativa de login com email e senha vazios" line="15">
+<kw name="Campos vazios">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.550456" level="INFO">${body} = {'mail': '', 'password': ''}</msg>
+<var>${body}</var>
+<arg>mail=${email_vazio}</arg>
+<arg>password=${senha_vazio}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.550456" elapsed="0.000000"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.551455" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.551455" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-04T10:30:22.551455" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-04T10:30:22.551455" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-04T10:30:22.551455" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-04T10:30:22.662448" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '28'} 
+ body=b'{"mail": "", "password": ""}' 
+ </msg>
+<msg time="2024-10-04T10:30:22.662448" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Fri, 04 Oct 2024 13:30:19 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '86', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"56-mZ8+sf9S4pc06UWc3lpjW9Q/WQw"'} 
+ body={"mail":"O campo e-mail é obrigatório.","password":"O campo senha é obrigatório."} 
+ </msg>
+<msg time="2024-10-04T10:30:22.662448" level="INFO">${resposta} = &lt;Response [400]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.551455" elapsed="0.110993"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.663444" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['password']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.664436" elapsed="0.000995"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['mail']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.665431" elapsed="0.001682"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.667113" level="INFO">&lt;Response [400]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.667113" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.668116" level="INFO">O campo senha é obrigatório.</msg>
+<arg>${resposta.json()['password']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.667113" elapsed="0.001003"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.669112" level="INFO">O campo e-mail é obrigatório.</msg>
+<arg>${resposta.json()['mail']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.668116" elapsed="0.000996"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resposta.json()['password']}</arg>
+<arg>O campo senha é obrigatório.</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.669112" elapsed="0.000996"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resposta.json()['mail']}</arg>
+<arg>O campo e-mail é obrigatório.</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.670108" elapsed="0.000000"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<msg time="2024-10-04T10:30:22.671105" level="INFO">${return} = True</msg>
+<var>${return}</var>
+<arg>alias=develop</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-10-04T10:30:22.671105" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.671105" level="INFO">True</msg>
+<arg>${return}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.671105" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-10-04T10:30:22.671105" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-10-04T10:30:22.671105" elapsed="0.000000"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<msg time="2024-10-04T10:30:22.672102" level="INFO">${return} = False</msg>
+<var>${return}</var>
+<arg>alias=develop</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-10-04T10:30:22.672102" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-04T10:30:22.672102" level="INFO">False</msg>
+<arg>${return}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-04T10:30:22.672102" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-04T10:30:22.550456" elapsed="0.121646"/>
+</kw>
+<status status="PASS" start="2024-10-04T10:30:22.550042" elapsed="0.123471"/>
+</test>
+<doc>Tentativa de login com campos email e senha vazios</doc>
+<status status="PASS" start="2024-10-04T10:30:22.225056" elapsed="0.449413"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tentativa login campos vazios">Tentativa login campos vazios</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

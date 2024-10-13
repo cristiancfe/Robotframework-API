@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.5 on win32)" generated="2024-10-03T17:48:01.500878" rpa="false" schemaversion="5">
+<suite id="s1" name="Post" source="C:\Users\sandr\Downloads\cristian\QACoders\Academy\Robot-API\post.robot">
+<test id="s1-t1" name="Imprimir nome no terminal" line="12">
+<kw name="Imprimir nome">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-03T17:48:01.555540" level="INFO">Olá Cristian Eisenhut, seja bem vindo ao dojo Robot</msg>
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-03T17:48:01.543912" elapsed="0.011628"/>
+</kw>
+<status status="PASS" start="2024-10-03T17:48:01.543912" elapsed="0.011628"/>
+</kw>
+<tag>regressivo</tag>
+<tag>test1</tag>
+<status status="PASS" start="2024-10-03T17:48:01.542604" elapsed="0.013929"/>
+</test>
+<test id="s1-t2" name="Imprimir nome no terminal2" line="16">
+<kw name="Imprimir nome">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-03T17:48:01.557534" level="INFO">Olá Cristian Eisenhut, seja bem vindo ao dojo Robot</msg>
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-03T17:48:01.557534" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-03T17:48:01.557534" elapsed="0.000000"/>
+</kw>
+<tag>regressivo</tag>
+<tag>test2</tag>
+<status status="PASS" start="2024-10-03T17:48:01.556533" elapsed="0.001001"/>
+</test>
+<doc>Teste Projeto</doc>
+<status status="PASS" start="2024-10-03T17:48:01.503035" elapsed="0.055489"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">regressivo</stat>
+<stat pass="1" fail="0" skip="0">test1</stat>
+<stat pass="1" fail="0" skip="0">test2</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Post">Post</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

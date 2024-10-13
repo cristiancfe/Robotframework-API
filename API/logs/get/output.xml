@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.5 on win32)" generated="2024-10-07T22:46:14.328731" rpa="false" schemaversion="5">
+<suite id="s1" name="Get Users" source="C:\Users\sandr\Downloads\cristian\QACoders\Academy\Robot-API\API\testes\get_users.robot">
+<test id="s1-t1" name="Listar usuarios" line="18">
+<kw name="Listar usuarios">
+<kw name="Pegar token">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:14.668126" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${email_admin}</arg>
+<arg>password=${senha_admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:14.667127" elapsed="0.000999"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:14.668126" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:14.668126" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:14.668126" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-07T22:46:14.668126" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:14.668126" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:15.880796" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-10-07T22:46:15.880796" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-KnaIKK91DrtZ/C7eZsc5f04pe34"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0"} 
+ </msg>
+<msg time="2024-10-07T22:46:15.880796" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:14.669122" elapsed="1.212668"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.881790" elapsed="0.000855"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.882645" elapsed="0.001775"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:15.884420" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.884420" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:15.885433" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0</msg>
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.884420" elapsed="0.001013"/>
+</kw>
+<return>
+<value>${resposta.json()['token']}</value>
+<status status="PASS" start="2024-10-07T22:46:15.885433" elapsed="0.000995"/>
+</return>
+<msg time="2024-10-07T22:46:15.886428" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHF...</msg>
+<var>${token}</var>
+<status status="PASS" start="2024-10-07T22:46:14.667127" elapsed="1.219301"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:15.935905" level="INFO">GET Request : url=https://lost.qacoders.dev.br/api/user/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ path_url=/api/user/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-10-07T22:46:15.936922" level="INFO">GET Response : url=https://lost.qacoders.dev.br/api/user/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"6b4d-Jfl56bIiDpB+EBntVBZH0iWeQAI"', 'Content-Encoding': 'gzip'} 
+ body=[{"_id":"66fde9eab219fa52052393c3","fullName":"Antonio Goncalves","mail":"antoniogoncalves@qacoders.com.br","password":"$2b$10$2J.3AXZwZ/kf7779.E1kUO.RBfM633bVra2IaSWZiCA/E7ZZ.lk.K","accessProfile":"ADMIN","cpf":"65636815964","status":false,"audit":[{"updatedBy":{"userId":"66fde9eab219fa52052393c3","userLogin":"luizaalves@terra.com.br"},"updateDate":"quarta-feira, 02/10/2024, 21:48:42 BRT","_id":"66fde9eab219fa52052393d5"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:42 BRT","_id":"66fde9eab219fa52052393dd"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:42 BRT","_id":"66fde9eab219fa52052393e5"}],"__v":0},{"_id":"670330c9b219fa520523d48c","fullName":"Cris Eisenhut","mail":"Crisenhut@gmail.com","password":"$2b$10$0dxf/Ockm.rDGrMV0bYkiOk0c24tia1EU.eVfZCoFgvpWRniAudMi","accessProfile":"ADMIN","cpf":"33225512288","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:52:25 BRT","registrationNumber":"QaCoders-26","_id":"670330c9b219fa520523d48d"}],"__v":0},{"_id":"670333b7b219fa520523d517","fullName":"Cris Eisenhut","mail":"Criseisenhut@gmail.com","password":"$2b$10$8yZ97IqZtO7vsvs2bFZ04exhNho8v8OEovNV/Xfv15vec68inCb2u","accessProfile":"ADMIN","cpf":"33225517734","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 22:04:55 BRT","registrationNumber":"QaCoders-28","_id":"670333b7b219fa520523d518"}],"__v":0},{"_id":"6703319fb219fa520523d503","fullName":"Crisfa Eisenhut","mail":"Crifasenhut@gmail.com","password":"$2b$10$5WS0nrYUZgTklwtxeDBin.nLi5ASEhIU52pH21KS86CwcjXzDNB.y","accessProfile":"ADMIN","cpf":"33225512211","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:55:59 BRT","registrationNumber":"QaCoders-27","_id":"6703319fb219fa520523d504"}],"__v":0},{"_id":"67032cc1b219fa520523d43e","fullName":"Cristian Fabiano","mail":"Cristianfabiano@gmail.com","password":"$2b$10$mV2ore9QBjBW3ccnz4fRZuk59Vmr.d5pOcwVjxXZfufRuqYkmvW2O","accessProfile":"ADMIN","cpf":"10101012200","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:35:13 BRT","registrationNumber":"QaCoders-21","_id":"67032cc1b219fa520523d43f"}],"__v":0},{"_id":"67032b49b219fa520523d41c","fullName":"Cristian Fabiano Eisenhut","mail":"Cristiancfe@gmail.com","password":"$2b$10$Chojv8S3J29pGfR/jnAo7umm0FVb2o0eq9Eejq2RwG/ifLWfff87i","accessProfile":"ADMIN","cpf":"10101012299","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:28:57 BRT","registrationNumber":"QaCoders-20","_id":"67032b49b219fa520523d41d"}],"__v":0},{"_id":"67041315b219fa520523d872","fullName":"Cristiane Kenedy","mail":"cristianekenedy@qacoders.com.br","password":"$2b$10$KlnmKMsfPmIkz/nYp8wAcOqTVfz2y0jRdDg/NQ1Gcr8Z5b8HdpaOG","accessProfile":"ADMIN","cpf":"55587119770","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"segunda-feira, 07/10/2024, 13:57:57 BRT","registrationNumber":"QaCoders-29","_id":"67041315b219fa520523d873"}],"__v":0},{"_id":"66fde9e5b219fa5205239342","fullName":"Eliza Eisenhut","mail":"elizaeisenhut@bol.com.br","password":"$2b$10$WecI.vFIJcYzlVZptN/eo.nCkc7EuwXrC2XCI7Z2M8vVr4RClNeA.","accessProfile":"ADMIN","cpf":"92571067419","status":false,"audit":[{"updatedBy":{"userId":"66fde9e5b219fa5205239342","userLogin":"elzaduarte@terra.com.br"},"updateDate":"quarta-feira, 02/10/2024, 21:48:38 BRT","_id":"66fde9e6b219fa5205239354"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:38 BRT","_id":"66fde9e6b219fa520523935c"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:38 BRT","_id":"66fde9e6b219fa5205239364"}],"__v":0},{"_id":"67032ed3b219fa520523d46a","fullName":"Fabia Eisenhut","mail":"Faisenhut@gmail.com","password":"$2b$10$lOVr7iz6ijA1Ri4b7Zpftu4oXWqF9jc/GZsDKTSYCUJkG52Dhsss6","accessProfile":"ADMIN","cpf":"33221012266","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:44:03 BRT","registrationNumber":"QaCoders-23","_id":"67032ed3b219fa520523d46b"}],"__v":0},{"_id":"67032e19b219fa520523d452","fullName":"Fabiano Eisenhut","mail":"Fabeisenhut@gmail.com","password":"$2b$10$ZJ8IC.2frAA.CgUzIB5HZeseRX65Mm/wCQzgE9AutUlLXi5GDagg2","accessProfile":"ADMIN","cpf":"10221012266","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:40:57 BRT","registrationNumber":"QaCoders-22","_id":"67032e19b219fa520523d453"}],"__v":0},{"_id":"66fde9c6b219fa52052392c1","fullName":"Fabiano Kenedy","mail":"fabianokenedy@bol.com.br","password":"$2b$10$.TkcW/0jLBlR2sRSIQsSYOq2v17LnxfAgIg/jV7ClMgtEqJXZA47e","accessProfile":"ADMIN","cpf":"81565640775","status":false,"audit":[{"updatedBy":{"userId":"66fde9c6b219fa52052392c1","userLogin":"pafuncioribeiro@cfe.com.br"},"updateDate":"quarta-feira, 02/10/2024, 21:48:07 BRT","_id":"66fde9c7b219fa52052392d3"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:07 BRT","_id":"66fde9c7b219fa52052392db"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:07 BRT","_id":"66fde9c7b219fa52052392e3"}],"__v":0},{"_id":"67032f2ab219fa520523d476","fullName":"Fabio Eisenhut","mail":"Fabiosenhut@gmail.com","password":"$2b$10$Zys1Ge5vY1ehxaBIzQkuburuOdJ2IClHnQHDMG70detvtL8Q5/hqm","accessProfile":"ADMIN","cpf":"33225512266","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 21:45:30 BRT","registrationNumber":"QaCoders-24","_id":"67032f2ab219fa520523d477"}],"__v":0},{"_id":"66fde719b219fa5205238ddb","fullName":"Francisco Goncalves","mail":"franciscogoncalves@terra.com.br","password":"$2b$10$8r7sC0hACqITxLCxSZ6hp.0nVHfwiDIhJk2in8hB8teUWjWQr03wG","accessProfile":"ADMIN","cpf":"69522361813","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"quarta-feira, 02/10/2024, 21:36:41 BRT","registrationNumber":"QaCoders-7","_id":"66fde719b219fa5205238ddc"}],"__v":0},{"_id":"66ffba7fb219fa520523a0f8","fullName":"Fulano de Tall","mail":"fulanodetall@email.com","password":"$2b$10$CE.wW9OzBcRa0t7YUSB0numWtgR9RrpFdIBHo0FJFLi0nEsZV1tbO","accessProfile":"ADMIN","cpf":"23953805368","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 04/10/2024, 06:50:55 BRT","registrationNumber":"QaCoders-17","_id":"66ffba7fb219fa520523a0f9"}],"__v":0},{"_id":"66fde9d7b219fa5205239317","fullName":"Jose Schereder","mail":"joseschereder@yahoo.com.br","password":"$2b$10$c/Hl53q/ltITgn1SLkQ8XedZlMaWGGtwzi.PPM5cezxpTdLAMTsK6","accessProfile":"ADMIN","cpf":"21895699544","status":false,"audit":[{"updatedBy":{"userId":"66fde9d7b219fa5205239317","userLogin":"cristianefloriano@yahoo.com.br"},"updateDate":"quarta-feira, 02/10/2024, 21:48:23 BRT","_id":"66fde9d8b219fa5205239329"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:24 BRT","_id":"66fde9d8b219fa5205239331"},{"updatedBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"updateDate":"quarta-feira, 02/10/2024, 21:48:24 BRT","_id":"66fde9d8b219fa5205239339"}],"__v":0},{"_id":"67033537b219fa520523d59d","fullName":"Mimi Eisenhut","mail":"Mimieisenhut@gmail.com","password":"$2b$10$Nq7NAW.iAI27r2oa9Jw8nutZefyIIUim6rAxEW/t48WE3t8ezYApG","accessProfile":"ADMIN","cpf":"33875517719","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"domingo, 06/10/2024, 22:11:19 BRT","registrationNumber":"QaCoders-30","_id":"67033537b219fa520523d59e"}],"__v":0},{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},{"_id":"66fb10dc6fda4030f25ccb51","fullName":"Roberto Conceição Filho","mail":"Roberto18413805377@gmail.com","password":"$2b$10$1vJuTanRHJ30K0uOAebQZ.xfHQeRFGF8LYMM3PLMsTRmNnKMR8qw.","accessProfile":"ADMIN","cpf":"18413805377","status":true,"audit":[{"registeredBy":{"userId":"66db5db773b730020dac42de","userLogin":"sysadmin@qacoders.com"},"registrationDate":"segunda-feira, 30/09/2024, 17:58:04 BRT","registrationNumber":"QaCoders-3","_id":"66fb10dc6fda4030f25ccb52"}],"__v":0},{"_id":"66fde9e7b219fa520523936d","fullName":"Roberval Duarte","mail":"robervalduarte@cfe.com.br","password":"$2b$10$YlBDmKuzuRkmALzodyTxLODcWCX3Q133DIEMU9V/Pzw.dJwCcKCDG","accessProfile":"ADMIN","cpf":"87589713048","status":false,"audit":[{"updatedBy":{"userId":"66fde9e7b219fa520523936d","userLogin":"sandrasilva@cfe.com"},"updateDate":"quarta-feira, 02/10/2024, 2... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg time="2024-10-07T22:46:15.936922" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/user/?token=${token}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.886428" elapsed="0.050494"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:15.938911" level="INFO">[{'_id': '66fde9eab219fa52052393c3', 'fullName': 'Antonio Goncalves', 'mail': 'antoniogoncalves@qacoders.com.br', 'password': '$2b$10$2J.3AXZwZ/kf7779.E1kUO.RBfM633bVra2IaSWZiCA/E7ZZ.lk.K', 'accessProfile': 'ADMIN', 'cpf': '65636815964', 'status': False, 'audit': [{'updatedBy': {'userId': '66fde9eab219fa52052393c3', 'userLogin': 'luizaalves@terra.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:42 BRT', '_id': '66fde9eab219fa52052393d5'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:42 BRT', '_id': '66fde9eab219fa52052393dd'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:42 BRT', '_id': '66fde9eab219fa52052393e5'}], '__v': 0}, {'_id': '670330c9b219fa520523d48c', 'fullName': 'Cris Eisenhut', 'mail': 'Crisenhut@gmail.com', 'password': '$2b$10$0dxf/Ockm.rDGrMV0bYkiOk0c24tia1EU.eVfZCoFgvpWRniAudMi', 'accessProfile': 'ADMIN', 'cpf': '33225512288', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:52:25 BRT', 'registrationNumber': 'QaCoders-26', '_id': '670330c9b219fa520523d48d'}], '__v': 0}, {'_id': '670333b7b219fa520523d517', 'fullName': 'Cris Eisenhut', 'mail': 'Criseisenhut@gmail.com', 'password': '$2b$10$8yZ97IqZtO7vsvs2bFZ04exhNho8v8OEovNV/Xfv15vec68inCb2u', 'accessProfile': 'ADMIN', 'cpf': '33225517734', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 22:04:55 BRT', 'registrationNumber': 'QaCoders-28', '_id': '670333b7b219fa520523d518'}], '__v': 0}, {'_id': '6703319fb219fa520523d503', 'fullName': 'Crisfa Eisenhut', 'mail': 'Crifasenhut@gmail.com', 'password': '$2b$10$5WS0nrYUZgTklwtxeDBin.nLi5ASEhIU52pH21KS86CwcjXzDNB.y', 'accessProfile': 'ADMIN', 'cpf': '33225512211', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:55:59 BRT', 'registrationNumber': 'QaCoders-27', '_id': '6703319fb219fa520523d504'}], '__v': 0}, {'_id': '67032cc1b219fa520523d43e', 'fullName': 'Cristian Fabiano', 'mail': 'Cristianfabiano@gmail.com', 'password': '$2b$10$mV2ore9QBjBW3ccnz4fRZuk59Vmr.d5pOcwVjxXZfufRuqYkmvW2O', 'accessProfile': 'ADMIN', 'cpf': '10101012200', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:35:13 BRT', 'registrationNumber': 'QaCoders-21', '_id': '67032cc1b219fa520523d43f'}], '__v': 0}, {'_id': '67032b49b219fa520523d41c', 'fullName': 'Cristian Fabiano Eisenhut', 'mail': 'Cristiancfe@gmail.com', 'password': '$2b$10$Chojv8S3J29pGfR/jnAo7umm0FVb2o0eq9Eejq2RwG/ifLWfff87i', 'accessProfile': 'ADMIN', 'cpf': '10101012299', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:28:57 BRT', 'registrationNumber': 'QaCoders-20', '_id': '67032b49b219fa520523d41d'}], '__v': 0}, {'_id': '67041315b219fa520523d872', 'fullName': 'Cristiane Kenedy', 'mail': 'cristianekenedy@qacoders.com.br', 'password': '$2b$10$KlnmKMsfPmIkz/nYp8wAcOqTVfz2y0jRdDg/NQ1Gcr8Z5b8HdpaOG', 'accessProfile': 'ADMIN', 'cpf': '55587119770', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 13:57:57 BRT', 'registrationNumber': 'QaCoders-29', '_id': '67041315b219fa520523d873'}], '__v': 0}, {'_id': '66fde9e5b219fa5205239342', 'fullName': 'Eliza Eisenhut', 'mail': 'elizaeisenhut@bol.com.br', 'password': '$2b$10$WecI.vFIJcYzlVZptN/eo.nCkc7EuwXrC2XCI7Z2M8vVr4RClNeA.', 'accessProfile': 'ADMIN', 'cpf': '92571067419', 'status': False, 'audit': [{'updatedBy': {'userId': '66fde9e5b219fa5205239342', 'userLogin': 'elzaduarte@terra.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:38 BRT', '_id': '66fde9e6b219fa5205239354'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:38 BRT', '_id': '66fde9e6b219fa520523935c'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:38 BRT', '_id': '66fde9e6b219fa5205239364'}], '__v': 0}, {'_id': '67032ed3b219fa520523d46a', 'fullName': 'Fabia Eisenhut', 'mail': 'Faisenhut@gmail.com', 'password': '$2b$10$lOVr7iz6ijA1Ri4b7Zpftu4oXWqF9jc/GZsDKTSYCUJkG52Dhsss6', 'accessProfile': 'ADMIN', 'cpf': '33221012266', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:44:03 BRT', 'registrationNumber': 'QaCoders-23', '_id': '67032ed3b219fa520523d46b'}], '__v': 0}, {'_id': '67032e19b219fa520523d452', 'fullName': 'Fabiano Eisenhut', 'mail': 'Fabeisenhut@gmail.com', 'password': '$2b$10$ZJ8IC.2frAA.CgUzIB5HZeseRX65Mm/wCQzgE9AutUlLXi5GDagg2', 'accessProfile': 'ADMIN', 'cpf': '10221012266', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:40:57 BRT', 'registrationNumber': 'QaCoders-22', '_id': '67032e19b219fa520523d453'}], '__v': 0}, {'_id': '66fde9c6b219fa52052392c1', 'fullName': 'Fabiano Kenedy', 'mail': 'fabianokenedy@bol.com.br', 'password': '$2b$10$.TkcW/0jLBlR2sRSIQsSYOq2v17LnxfAgIg/jV7ClMgtEqJXZA47e', 'accessProfile': 'ADMIN', 'cpf': '81565640775', 'status': False, 'audit': [{'updatedBy': {'userId': '66fde9c6b219fa52052392c1', 'userLogin': 'pafuncioribeiro@cfe.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:07 BRT', '_id': '66fde9c7b219fa52052392d3'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:07 BRT', '_id': '66fde9c7b219fa52052392db'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:07 BRT', '_id': '66fde9c7b219fa52052392e3'}], '__v': 0}, {'_id': '67032f2ab219fa520523d476', 'fullName': 'Fabio Eisenhut', 'mail': 'Fabiosenhut@gmail.com', 'password': '$2b$10$Zys1Ge5vY1ehxaBIzQkuburuOdJ2IClHnQHDMG70detvtL8Q5/hqm', 'accessProfile': 'ADMIN', 'cpf': '33225512266', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 21:45:30 BRT', 'registrationNumber': 'QaCoders-24', '_id': '67032f2ab219fa520523d477'}], '__v': 0}, {'_id': '66fde719b219fa5205238ddb', 'fullName': 'Francisco Goncalves', 'mail': 'franciscogoncalves@terra.com.br', 'password': '$2b$10$8r7sC0hACqITxLCxSZ6hp.0nVHfwiDIhJk2in8hB8teUWjWQr03wG', 'accessProfile': 'ADMIN', 'cpf': '69522361813', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'quarta-feira, 02/10/2024, 21:36:41 BRT', 'registrationNumber': 'QaCoders-7', '_id': '66fde719b219fa5205238ddc'}], '__v': 0}, {'_id': '66ffba7fb219fa520523a0f8', 'fullName': 'Fulano de Tall', 'mail': 'fulanodetall@email.com', 'password': '$2b$10$CE.wW9OzBcRa0t7YUSB0numWtgR9RrpFdIBHo0FJFLi0nEsZV1tbO', 'accessProfile': 'ADMIN', 'cpf': '23953805368', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 04/10/2024, 06:50:55 BRT', 'registrationNumber': 'QaCoders-17', '_id': '66ffba7fb219fa520523a0f9'}], '__v': 0}, {'_id': '66fde9d7b219fa5205239317', 'fullName': 'Jose Schereder', 'mail': 'joseschereder@yahoo.com.br', 'password': '$2b$10$c/Hl53q/ltITgn1SLkQ8XedZlMaWGGtwzi.PPM5cezxpTdLAMTsK6', 'accessProfile': 'ADMIN', 'cpf': '21895699544', 'status': False, 'audit': [{'updatedBy': {'userId': '66fde9d7b219fa5205239317', 'userLogin': 'cristianefloriano@yahoo.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:23 BRT', '_id': '66fde9d8b219fa5205239329'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:24 BRT', '_id': '66fde9d8b219fa5205239331'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:24 BRT', '_id': '66fde9d8b219fa5205239339'}], '__v': 0}, {'_id': '67033537b219fa520523d59d', 'fullName': 'Mimi Eisenhut', 'mail': 'Mimieisenhut@gmail.com', 'password': '$2b$10$Nq7NAW.iAI27r2oa9Jw8nutZefyIIUim6rAxEW/t48WE3t8ezYApG', 'accessProfile': 'ADMIN', 'cpf': '33875517719', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 22:11:19 BRT', 'registrationNumber': 'QaCoders-30', '_id': '67033537b219fa520523d59e'}], '__v': 0}, {'_id': '66db5da6414c5c627622d6ef', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC', 'accessProfile': 'SYSADMIN', 'cpf': '11111111111', 'status': True, 'audit': [{'registeredBy': {'userId': '111111111111111111', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 06/09/2024, 16:53:10 BRT', 'registrationNumber': '01', 'companyId': 'Qa.Coders', '_id': '66db5da6414c5c627622d6f0'}], '__v': 0}, {'_id': '66fb10dc6fda4030f25ccb51', 'fullName': 'Roberto Conceição Filho', 'mail': 'Roberto18413805377@gmail.com', 'password': '$2b$10$1vJuTanRHJ30K0uOAebQZ.xfHQeRFGF8LYMM3PLMsTRmNnKMR8qw.', 'accessProfile': 'ADMIN', 'cpf': '18413805377', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5db773b730020dac42de', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 30/09/2024, 17:58:04 BRT', 'registrationNumber': 'QaCoders-3', '_id': '66fb10dc6fda4030f25ccb52'}], '__v': 0}, {'_id': '66fde9e7b219fa520523936d', 'fullName': 'Roberval Duarte', 'mail': 'robervalduarte@cfe.com.br', 'password': '$2b$10$YlBDmKuzuRkmALzodyTxLODcWCX3Q133DIEMU9V/Pzw.dJwCcKCDG', 'accessProfile': 'ADMIN', 'cpf': '87589713048', 'status': False, 'audit': [{'updatedBy': {'userId': '66fde9e7b219fa520523936d', 'userLogin': 'sandrasilva@cfe.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:39 BRT', '_id': '66fde9e8b219fa520523937f'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:40 BRT', '_id': '66fde9e8b219fa5205239387'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:40 BRT', '_id': '66fde9e8b219fa520523938f'}], '__v': 0}, {'_id': '67046ce2b219fa520523dc38', 'fullName': 'Sandra Eisenhut', 'mail': 'Sandraeisenhut@gmail.com', 'password': '$2b$10$5WPvvJozkkQkD9SfaVRJiOpP.Ywo8pbfsO6Yb0v9mtx/WjojzSFCW', 'accessProfile': 'ADMIN', 'cpf': '11134445176', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 20:21:06 BRT', 'registrationNumber': 'QaCoders-34', '_id': '67046ce2b219fa520523dc39'}], '__v': 0}, {'_id': '67045d3cb219fa520523dbb3', 'fullName': 'Sibe Eisenhut', 'mail': 'Sibeeisenhut@gmail.com', 'password': '$2b$10$DABpXFwRKK.lWSptuclAyO4eG1p28EZ4zcjti1DZt2Nc9eGDiIT2S', 'accessProfile': 'ADMIN', 'cpf': '33874417733', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 19:14:20 BRT', 'registrationNumber': 'QaCoders-30', '_id': '67045d3cb219fa520523dbb4'}], '__v': 0}, {'_id': '670463a3b219fa520523dbe9', 'fullName': 'Sibe Miguele Eisenhut', 'mail': 'Sibemigueleisenhut@gmail.com', 'password': '$2b$10$R9xgchYbA5XbJhGcFHWEBuYBErOKQtG92NbV9q5PiuC9nuIYwyTw2', 'accessProfile': 'ADMIN', 'cpf': '11134445133', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 19:41:39 BRT', 'registrationNumber': 'QaCoders-33', '_id': '670463a3b219fa520523dbea'}], '__v': 0}, {'_id': '67045e0fb219fa520523dbbf', 'fullName': 'Sibelita Eisenhut', 'mail': 'Sibelitaeisenhut@gmail.com', 'password': '$2b$10$sdeCXi9giExx4kHbahsGQOFIFdzY6jU7xehS59KgOkcvptGvXEMk6', 'accessProfile': 'ADMIN', 'cpf': '35434417733', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 19:17:51 BRT', 'registrationNumber': 'QaCoders-31', '_id': '67045e0fb219fa520523dbc0'}], '__v': 0}, {'_id': '670462d6b219fa520523dbdd', 'fullName': 'Sibelita Miguele Eisenhut', 'mail': 'Sibelitamigueleisenhut@gmail.com', 'password': '$2b$10$/zELIdVo1HWVNkOWqsGIp.sOmtt0u3yXW2rmQu3OFQi2g8s4tEeDK', 'accessProfile': 'ADMIN', 'cpf': '11134417733', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 19:38:14 BRT', 'registrationNumber': 'QaCoders-32', '_id': '670462d6b219fa520523dbde'}], '__v': 0}, {'_id': '670333fdb219fa520523d523', 'fullName': 'Sisi Eisenhut', 'mail': 'sisieisenhut@gmail.com', 'password': '$2b$10$KJSQYA9XGmtBmvT9old0TurCNSvagbeCppcFiwNEA4BMnkxEdh426', 'accessProfile': 'ADMIN', 'cpf': '33875517734', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 06/10/2024, 22:06:05 BRT', 'registrationNumber': 'QaCoders-29', '_id': '670333fdb219fa520523d524'}], '__v': 0}, {'_id': '66f994c46fda4030f25ccaaa', 'fullName': 'Tesote do Teste', 'mail': '1ster5d@test.com.br', 'password': '$2b$10$Horha8FnAVvGEwHB6rqDlOpgRQbaY4qT/6FP6tgZ0AD9BrAbj7a6S', 'accessProfile': 'ADMIN', 'cpf': '69721459373', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'domingo, 29/09/2024, 14:56:19 BRT', 'registrationNumber': 'QaCoders-2', '_id': '66f994c46fda4030f25ccaab'}], '__v': 0}, {'_id': '66fbeabab219fa520523811f', 'fullName': 'Tesote do Teste', 'mail': 'aster5d@test.com.br', 'password': '$2b$10$4IC1gkR7flaOJjhul.aU8u2Ci7QvTkYapdqqg13UY6Nz1xMmycmoa', 'accessProfile': 'ADMIN', 'cpf': '69721459379', 'status': True, 'audit': [{'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 12:59:00 BRT', '_id': '66febf44b219fa5205239e16'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 12:59:07 BRT', '_id': '66febf4bb219fa5205239e1e'}], '__v': 0}, {'_id': '66fec159b219fa5205239e41', 'fullName': 'Tesote do Teste', 'mail': 'Testando@test.com.br', 'password': '$2b$10$o/Nv8xB1PSbM5eZ3anMQL.IHju2UCFVdvowC6ryajrOa0VsySi9uq', 'accessProfile': 'ADMIN', 'cpf': '69721459370', 'status': True, 'audit': [{'registeredBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'registrationDate': 'quinta-feira, 03/10/2024, 13:07:53 BRT', 'registrationNumber': 'QaCoders-15', '_id': '66fec159b219fa5205239e42'}], '__v': 0}, {'_id': '66fff038b219fa520523a19d', 'fullName': 'Tesote do Teste', 'mail': 'Testandos@test.com.br', 'password': '$2b$10$BePwMK.uKDvRvMCdRtPZOuzadjJsaHN0xS87KFCz2MubuyD1xWru.', 'accessProfile': 'ADMIN', 'cpf': '69721459377', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 04/10/2024, 10:40:08 BRT', 'registrationNumber': 'QaCoders-17', '_id': '66fff038b219fa520523a19e'}], '__v': 0}, {'_id': '66fffe03b219fa520523a745', 'fullName': 'Tesote do Teste', 'mail': 'Testaendos@test.com.br', 'password': '$2b$10$QcATqIk23q9THyBkOsD.SOvVgItl3cnA.MKEugETM26t66GUp8SPy', 'accessProfile': 'ADMIN', 'cpf': '69721459477', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 04/10/2024, 11:38:59 BRT', 'registrationNumber': 'QaCoders-18', '_id': '66fffe03b219fa520523a746'}], '__v': 0}, {'_id': '67000296b219fa520523a751', 'fullName': 'Tesote do Teste', 'mail': 'Testaaendos@test.com.br', 'password': '$2b$10$Qk8zRDq1Mq9/48QX9yLPM.FvhxAHPTRZd1mm3VdVcZF96sSqe.B22', 'accessProfile': 'ADMIN', 'cpf': '69721459417', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 04/10/2024, 11:58:30 BRT', 'registrationNumber': 'QaCoders-19', '_id': '67000296b219fa520523a752'}], '__v': 0}, {'_id': '66fb2ab86fda4030f25ccb89', 'fullName': 'Test Test', 'mail': 'taest@test.com', 'password': '$2b$10$IuPEuoVgLTXxa66EAatDcOrE/dmsLO4w0AgVlLNgip6k0XIUEwgzK', 'accessProfile': 'ADMIN', 'cpf': '69721459374', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 30/09/2024, 19:48:24 BRT', 'registrationNumber': 'QaCoders-6', '_id': '66fb2ab86fda4030f25ccb8a'}, {'updatedBy': {'userId': '66fb2ab86fda4030f25ccb89', 'userLogin': '0ster5d@test.com.br'}, 'updateDate': 'segunda-feira, 30/09/2024, 19:51:26 BRT', '_id': '66fb2b6e6fda4030f25ccb95'}], '__v': 0}, {'_id': '66fb26936fda4030f25ccb6f', 'fullName': 'Teste Test', 'mail': 'taest1@test.com', 'password': '$2b$10$NHc/szTit5dBFxW7FIjo1.OxCFFeHB8kVA/1DqcRK8MlegKriN5r6', 'accessProfile': 'ADMIN', 'cpf': '99988877733', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 30/09/2024, 19:30:43 BRT', 'registrationNumber': 'QaCoders-5', '_id': '66fb26936fda4030f25ccb70'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 07:25:28 BRT', '_id': '66fd1f98b219fa5205238171'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 19:05:49 BRT', '_id': '66fdc3bdb219fa520523831a'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 19:15:42 BRT', '_id': '66fdc60eb219fa5205238379'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 19:16:29 BRT', '_id': '66fdc63db219fa520523838a'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 19:16:30 BRT', '_id': '66fdc63eb219fa52052383b6'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 19:41:19 BRT', '_id': '66fdcc0fb219fa52052383cd'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 19:41:20 BRT', '_id': '66fdcc10b219fa5205238405'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:47:25 BRT', '_id': '66fddb8db219fa5205238422'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:47:25 BRT', '_id': '66fddb8db219fa5205238466'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:47:25 BRT', '_id': '66fddb8db219fa5205238492'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:58:52 BRT', '_id': '66fdde3cb219fa52052384b8'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:58:53 BRT', '_id': '66fdde3db219fa520523850e'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:58:53 BRT', '_id': '66fdde3db219fa5205238546'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:59:30 BRT', '_id': '66fdde62b219fa5205238575'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:59:30 BRT', '_id': '66fdde62b219fa52052385dd'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 20:59:30 BRT', '_id': '66fdde62b219fa5205238621'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:01:18 BRT', '_id': '66fddeceb219fa5205238659'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:01:18 BRT', '_id': '66fddeceb219fa52052386d3'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:01:19 BRT', '_id': '66fddecfb219fa5205238723'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:10:40 BRT', '_id': '66fde100b219fa5205238779'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:13:13 BRT', '_id': '66fde199b219fa5205238807'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:13:57 BRT', '_id': '66fde1c5b219fa520523889b'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:14:34 BRT', '_id': '66fde1eab219fa5205238935'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:15:24 BRT', '_id': '66fde21cb219fa52052389d5'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:16:24 BRT', '_id': '66fde258b219fa5205238a7b'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:17:54 BRT', '_id': '66fde2b2b219fa5205238b27'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:30:54 BRT', '_id': '66fde5beb219fa5205238bd9'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:33:46 BRT', '_id': '66fde66ab219fa5205238c91'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:35:43 BRT', '_id': '66fde6dfb219fa5205238d4f'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:38:58 BRT', '_id': '66fde7a2b219fa520523900f'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:56:05 BRT', '_id': '66fdeba5b219fa520523946c'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 10:48:21 BRT', '_id': '66fea0a5b219fa5205239600'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 10:48:21 BRT', '_id': '66fea0a5b219fa52052396d4'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:03:22 BRT', '_id': '66fea42ab219fa5205239764'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:03:22 BRT', '_id': '66fea42ab219fa520523981e'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:11:19 BRT', '_id': '66fea607b219fa52052398b6'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:11:20 BRT', '_id': '66fea608b219fa520523997a'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:15:12 BRT', '_id': '66fea6f0b219fa52052399f3'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:15:12 BRT', '_id': '66fea6f0b219fa5205239aeb'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:16:32 BRT', '_id': '66fea740b219fa5205239b6a'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:16:32 BRT', '_id': '66fea740b219fa5205239c6e'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 11:43:47 BRT', '_id': '66feada3b219fa5205239d37'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'quinta-feira, 03/10/2024, 15:00:04 BRT', '_id': '66fedba4b219fa5205239ea8'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 10:48:56 BRT', '_id': '66fff248b219fa520523a20c'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 10:48:56 BRT', '_id': '66fff248b219fa520523a298'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 11:07:07 BRT', '_id': '66fff68bb219fa520523a35f'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 11:07:07 BRT', '_id': '66fff68bb219fa520523a3f1'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 11:09:24 BRT', '_id': '66fff714b219fa520523a4be'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 11:09:24 BRT', '_id': '66fff714b219fa520523a556'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 11:11:51 BRT', '_id': '66fff7a7b219fa520523a62e'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sexta-feira, 04/10/2024, 11:11:51 BRT', '_id': '66fff7a7b219fa520523a6cc'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sábado, 05/10/2024, 10:36:51 BRT', '_id': '670140f3b219fa520523d062'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sábado, 05/10/2024, 10:36:51 BRT', '_id': '670140f3b219fa520523d106'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sábado, 05/10/2024, 10:46:12 BRT', '_id': '67014324b219fa520523d1ee'}, {'updatedBy': {'userId': '66fbeabab219fa520523811f', 'userLogin': 'aster5d@test.com.br'}, 'updateDate': 'sábado, 05/10/2024, 10:46:13 BRT', '_id': '67014325b219fa520523d298'}], '__v': 0}, {'_id': '66fde9d6b219fa52052392ec', 'fullName': 'William Silva', 'mail': 'williamsilva@cfe.com', 'password': '$2b$10$cSB4UpK94ie3jWcoWelO5ejIvtACFi0yhdASwY2eVuJdm2EkXCf36', 'accessProfile': 'ADMIN', 'cpf': '29099359890', 'status': False, 'audit': [{'updatedBy': {'userId': '66fde9d6b219fa52052392ec', 'userLogin': 'elizakenedy@yahoo.com.br'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:22 BRT', '_id': '66fde9d6b219fa52052392fe'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:22 BRT', '_id': '66fde9d6b219fa5205239306'}, {'updatedBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'updateDate': 'quarta-feira, 02/10/2024, 21:48:23 BRT', '_id': '66fde9d7b219fa520523930e'}], '__v': 0}]</msg>
+<arg>${resposta.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.936922" elapsed="0.001989"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.938911" elapsed="0.020853"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:14.667127" elapsed="1.292637"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:14.666735" elapsed="1.294255"/>
+</test>
+<test id="s1-t2" name="Contar usuarios" line="20">
+<kw name="Count users">
+<kw name="Pegar token">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:15.962608" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${email_admin}</arg>
+<arg>password=${senha_admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.962608" elapsed="0.000000"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:15.962608" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.962608" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:15.962608" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-07T22:46:15.962608" elapsed="0.001161"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:15.962608" elapsed="0.001161"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.146426" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-10-07T22:46:16.147441" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-KnaIKK91DrtZ/C7eZsc5f04pe34"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0"} 
+ </msg>
+<msg time="2024-10-07T22:46:16.147441" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:15.963769" elapsed="0.183672"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.147441" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.147441" elapsed="0.001382"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.148823" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.148823" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.150102" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0</msg>
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.148823" elapsed="0.001279"/>
+</kw>
+<return>
+<value>${resposta.json()['token']}</value>
+<status status="PASS" start="2024-10-07T22:46:16.150102" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-07T22:46:16.150102" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHF...</msg>
+<var>${token}</var>
+<status status="PASS" start="2024-10-07T22:46:15.962608" elapsed="0.188491"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.187729" level="INFO">GET Request : url=https://lost.qacoders.dev.br/api/user/count?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ path_url=/api/user/count?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-10-07T22:46:16.187729" level="INFO">GET Response : url=https://lost.qacoders.dev.br/api/user/count?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '12', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"c-6j8mQsLBgttHF+I8FlFNKqqWee8"'} 
+ body={"count":34} 
+ </msg>
+<msg time="2024-10-07T22:46:16.187729" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/user/count?token=${token}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.151099" elapsed="0.036630"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['count']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.187729" elapsed="0.001036"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.188765" level="INFO">34</msg>
+<arg>${resposta.json()['count']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.188765" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:15.962608" elapsed="0.226157"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:15.962122" elapsed="0.227769"/>
+</test>
+<test id="s1-t3" name="Pegar usuario por id" line="23">
+<kw name="Get users id">
+<kw name="Pegar token">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.189891" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${email_admin}</arg>
+<arg>password=${senha_admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.189891" elapsed="0.000000"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.191323" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.191323" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.191323" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-07T22:46:16.191323" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.191323" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.372215" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-10-07T22:46:16.372215" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-KnaIKK91DrtZ/C7eZsc5f04pe34"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0"} 
+ </msg>
+<msg time="2024-10-07T22:46:16.372215" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.192334" elapsed="0.179881"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.373218" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.374584" elapsed="0.002687"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.378337" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.377271" elapsed="0.001066"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.379334" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0</msg>
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.378337" elapsed="0.000997"/>
+</kw>
+<return>
+<value>${resposta.json()['token']}</value>
+<status status="PASS" start="2024-10-07T22:46:16.379334" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-07T22:46:16.380340" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHF...</msg>
+<var>${token}</var>
+<status status="PASS" start="2024-10-07T22:46:16.189891" elapsed="0.190449"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.418559" level="INFO">GET Request : url=https://lost.qacoders.dev.br/api/user/67041315b219fa520523d872?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ path_url=/api/user/67041315b219fa520523d872?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-10-07T22:46:16.418559" level="INFO">GET Response : url=https://lost.qacoders.dev.br/api/user/67041315b219fa520523d872?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"1db-mWIfzRU7xfgzcg5CgZAZss5U2O0"', 'Content-Encoding': 'gzip'} 
+ body={"_id":"67041315b219fa520523d872","fullName":"Cristiane Kenedy","mail":"cristianekenedy@qacoders.com.br","password":"$2b$10$KlnmKMsfPmIkz/nYp8wAcOqTVfz2y0jRdDg/NQ1Gcr8Z5b8HdpaOG","accessProfile":"ADMIN","cpf":"55587119770","status":true,"audit":[{"registeredBy":{"userId":"66db5da6414c5c627622d6ef","userLogin":"sysadmin@qacoders.com"},"registrationDate":"segunda-feira, 07/10/2024, 13:57:57 BRT","registrationNumber":"QaCoders-29","_id":"67041315b219fa520523d873"}],"__v":0} 
+ </msg>
+<msg time="2024-10-07T22:46:16.418559" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/user/${id_user}?token=${token}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.380340" elapsed="0.038219"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.419586" level="INFO">{'_id': '67041315b219fa520523d872', 'fullName': 'Cristiane Kenedy', 'mail': 'cristianekenedy@qacoders.com.br', 'password': '$2b$10$KlnmKMsfPmIkz/nYp8wAcOqTVfz2y0jRdDg/NQ1Gcr8Z5b8HdpaOG', 'accessProfile': 'ADMIN', 'cpf': '55587119770', 'status': True, 'audit': [{'registeredBy': {'userId': '66db5da6414c5c627622d6ef', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'segunda-feira, 07/10/2024, 13:57:57 BRT', 'registrationNumber': 'QaCoders-29', '_id': '67041315b219fa520523d873'}], '__v': 0}</msg>
+<arg>${resposta.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.419586" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['_id'][0]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.419586" elapsed="0.001635"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.189891" elapsed="0.231330"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.189891" elapsed="0.232083"/>
+</test>
+<test id="s1-t4" name="Tentar listar usuario inexistente" line="25">
+<kw name="Tentar listar usuario inexistente">
+<kw name="Pegar token">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.424865" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${email_admin}</arg>
+<arg>password=${senha_admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.423863" elapsed="0.001002"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.424865" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.424865" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.425861" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-07T22:46:16.424865" elapsed="0.000996"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.424865" elapsed="0.000996"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.603821" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-10-07T22:46:16.603821" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:11 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-KnaIKK91DrtZ/C7eZsc5f04pe34"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0"} 
+ </msg>
+<msg time="2024-10-07T22:46:16.603821" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.425861" elapsed="0.177960"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.604816" elapsed="0.000488"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.605835" elapsed="0.002417"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.609250" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.608252" elapsed="0.000998"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.610245" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0</msg>
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.609250" elapsed="0.000995"/>
+</kw>
+<return>
+<value>${resposta.json()['token']}</value>
+<status status="PASS" start="2024-10-07T22:46:16.610245" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-07T22:46:16.611242" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHF...</msg>
+<var>${token}</var>
+<status status="PASS" start="2024-10-07T22:46:16.423863" elapsed="0.187379"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.655228" level="INFO">GET Request : url=https://lost.qacoders.dev.br/api/user/67047e97b219fa520523dcb6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ path_url=/api/user/67047e97b219fa520523dcb6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-10-07T22:46:16.655228" level="INFO">GET Response : url=https://lost.qacoders.dev.br/api/user/67047e97b219fa520523dcb6?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MSwiZXhwIjoxNzI4NDM4MzcxfQ.eaeiXExyb_Gyd5x8gRXRfY2CnGku9rN7iZQutHjgCi0 
+ status=404, reason=Not Found 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:12 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"3f-O9rifBSrBsjLhsfGHBwqcfNkXcs"', 'Content-Encoding': 'gzip'} 
+ body={"alert":["Esse usuário não existe em nossa base de dados."]} 
+ </msg>
+<msg time="2024-10-07T22:46:16.656253" level="INFO">${resposta} = &lt;Response [404]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/user/${id_user_inexistente}?token=${token}</arg>
+<arg>expected_status=404</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.611242" elapsed="0.045011"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.657246" level="INFO">['Esse usuário não existe em nossa base de dados.']</msg>
+<arg>${resposta.json()['alert']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.656253" elapsed="0.000993"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['alert']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.657246" elapsed="0.001990"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.660234" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resposta.json()['alert']}</arg>
+<arg>['Esse usuário não existe em nossa base de dados.']</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.659236" elapsed="0.000998"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.423863" elapsed="0.236371"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.423011" elapsed="0.238057"/>
+</test>
+<test id="s1-t5" name="Tentar listar usuarios com token invalido" line="27">
+<kw name="Tentar listar usuarios com token invalido">
+<kw name="Pegar token">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.665740" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${email_admin}</arg>
+<arg>password=${senha_admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.664744" elapsed="0.000996"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.666740" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.665740" elapsed="0.001000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.666740" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-07T22:46:16.666740" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.665740" elapsed="0.001000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.844512" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-10-07T22:46:16.844512" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:12 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-uruDzEIACs8grQyfgVlFPNeBxVA"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MiwiZXhwIjoxNzI4NDM4MzcyfQ.mKr7LvtRWvv4bScPttXoMJ-HQkdoyCz5j8JRyEb4rUE"} 
+ </msg>
+<msg time="2024-10-07T22:46:16.844512" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.666740" elapsed="0.177772"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.844512" elapsed="0.001442"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.845954" elapsed="0.003993"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.849947" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.849947" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.852004" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODM1MTk3MiwiZXhwIjoxNzI4NDM4MzcyfQ.mKr7LvtRWvv4bScPttXoMJ-HQkdoyCz5j8JRyEb4rUE</msg>
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.851015" elapsed="0.000989"/>
+</kw>
+<return>
+<value>${resposta.json()['token']}</value>
+<status status="PASS" start="2024-10-07T22:46:16.852004" elapsed="0.000000"/>
+</return>
+<msg time="2024-10-07T22:46:16.853001" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHF...</msg>
+<var>${token}</var>
+<status status="PASS" start="2024-10-07T22:46:16.663742" elapsed="0.189259"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.887966" level="INFO">GET Request : url=https://lost.qacoders.dev.br/api/user/67041315b219fa520523d872?token=jgkjgkjgkgkjgk 
+ path_url=/api/user/67041315b219fa520523d872?token=jgkjgkjgkgkjgk 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-10-07T22:46:16.888968" level="INFO">GET Response : url=https://lost.qacoders.dev.br/api/user/67041315b219fa520523d872?token=jgkjgkjgkgkjgk 
+ status=403, reason=Forbidden 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Tue, 08 Oct 2024 01:46:12 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"2c-xKef5yLjBxNw1obTC++VAJHdlUI"', 'Content-Encoding': 'gzip'} 
+ body={"errors":["Failed to authenticate token."]} 
+ </msg>
+<msg time="2024-10-07T22:46:16.888968" level="INFO">${resposta} = &lt;Response [403]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/user/${id_user}?token=${token_fail}</arg>
+<arg>expected_status=403</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.853001" elapsed="0.035967"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.888968" level="INFO">['Failed to authenticate token.']</msg>
+<arg>${resposta.json()['errors']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.888968" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.889964" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resposta.json()['errors']}</arg>
+<arg>['Failed to authenticate token.']</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.889964" elapsed="0.000000"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.889964" level="INFO">${return} = True</msg>
+<var>${return}</var>
+<arg>alias=develop</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-10-07T22:46:16.889964" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.890960" level="INFO">True</msg>
+<arg>${return}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.890960" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.890960" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-10-07T22:46:16.890960" elapsed="0.000000"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<msg time="2024-10-07T22:46:16.891956" level="INFO">${return} = False</msg>
+<var>${return}</var>
+<arg>alias=develop</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-10-07T22:46:16.890960" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-07T22:46:16.891956" level="INFO">False</msg>
+<arg>${return}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-07T22:46:16.891956" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.663742" elapsed="0.228214"/>
+</kw>
+<status status="PASS" start="2024-10-07T22:46:16.663066" elapsed="0.228890"/>
+</test>
+<doc>Pegar token</doc>
+<status status="PASS" start="2024-10-07T22:46:14.331998" elapsed="2.561952"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="5" fail="0" skip="0" id="s1" name="Get Users">Get Users</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
