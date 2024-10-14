@@ -1,4 +1,4 @@
-# Robotframework-API-2
+# Robotframework-API
 ## Automação de API
 ## Projeto do Academy no Qa.Coders - Equipe LOST na qual fui Lider de Squad
 ## Realizando Os testes POST, GET, PUT e DELETE e CRUD
