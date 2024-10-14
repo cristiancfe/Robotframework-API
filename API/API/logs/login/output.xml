@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.5 on win32)" generated="2024-10-03T21:29:12.471028" rpa="false" schemaversion="5">
+<suite id="s1" name="Login" source="C:\Users\sandr\Downloads\cristian\QACoders\Academy\Robot-API\login.robot">
+<test id="s1-t1" name="Validar Login com Sucesso" line="15">
+<kw name="Realizar Login">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-03T21:29:12.792455" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${email_admin}</arg>
+<arg>password=${senha_admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-03T21:29:12.792455" elapsed="0.000000"/>
+</kw>
+<kw name="Criar sessao">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-03T21:29:12.792455" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-03T21:29:12.792455" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-10-03T21:29:12.793455" level="INFO">Creating Session using : alias=develop, url=https://lost.qacoders.dev.br/api, headers={'accept': 'application/json', 'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>alias=develop</arg>
+<arg>url=${baseUrl}</arg>
+<arg>headers=${headers}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-10-03T21:29:12.793455" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-03T21:29:12.792455" elapsed="0.001000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-10-03T21:29:14.013546" level="INFO">POST Request : url=https://lost.qacoders.dev.br/api/login 
+ path_url=/api/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-10-03T21:29:14.013546" level="INFO">POST Response : url=https://lost.qacoders.dev.br/api/login 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Fri, 04 Oct 2024 00:29:10 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-G2fk4urkEBoAC3oiUu5V3Squ3Wk"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"66db5da6414c5c627622d6ef","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$l1u04qYrgwXyF4sJFuHDO.svwyeIX93O7XW0FZ.f6jtXCym0LUnmC","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 06/09/2024, 16:53:10 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"66db5da6414c5c627622d6f0"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODAwMTc1MCwiZXhwIjoxNzI4MDg4MTUwfQ.sWh74_P9Y8Ibf0ay_OS7Tq7AuJZR55eDccLyssOnu6E"} 
+ </msg>
+<msg time="2024-10-03T21:29:14.013546" level="INFO">${resposta} = &lt;Response [200]&gt;</msg>
+<var>${resposta}</var>
+<arg>alias=develop</arg>
+<arg>url=/login</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-10-03T21:29:12.793455" elapsed="1.220091"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-03T21:29:14.013546" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-03T21:29:14.013546" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-03T21:29:14.014542" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${resposta}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-03T21:29:14.014542" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-03T21:29:14.016012" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRiNWRhNjQxNGM1YzYyNzYyMmQ2ZWYiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsMXUwNHFZcmd3WHlGNHNKRnVIRE8uc3Z3eWVJWDkzTzdYVzBGWi5mNmp0WEN5bTBMVW5tQyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDA2LzA5LzIwMjQsIDE2OjUzOjEwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjZkYjVkYTY0MTRjNWM2Mjc2MjJkNmYwIn1dLCJfX3YiOjAsImlhdCI6MTcyODAwMTc1MCwiZXhwIjoxNzI4MDg4MTUwfQ.sWh74_P9Y8Ibf0ay_OS7Tq7AuJZR55eDccLyssOnu6E</msg>
+<arg>${resposta.json()['token']}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-03T21:29:14.014542" elapsed="0.001470"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<msg time="2024-10-03T21:29:14.016012" level="INFO">${return} = True</msg>
+<var>${return}</var>
+<arg>alias=develop</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-10-03T21:29:14.016012" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-03T21:29:14.016514" level="INFO">True</msg>
+<arg>${return}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-03T21:29:14.016012" elapsed="0.000502"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-10-03T21:29:14.016514" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-10-03T21:29:14.016514" elapsed="0.000000"/>
+</kw>
+<kw name="Session Exists" owner="RequestsLibrary">
+<msg time="2024-10-03T21:29:14.016514" level="INFO">${return} = False</msg>
+<var>${return}</var>
+<arg>alias=develop</arg>
+<doc>Return True if the session has been already created</doc>
+<status status="PASS" start="2024-10-03T21:29:14.016514" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-03T21:29:14.016514" level="INFO">False</msg>
+<arg>${return}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-03T21:29:14.016514" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-03T21:29:12.791458" elapsed="1.225056"/>
+</kw>
+<status status="PASS" start="2024-10-03T21:29:12.791458" elapsed="1.226054"/>
+</test>
+<doc>Pegar Token</doc>
+<status status="PASS" start="2024-10-03T21:29:12.472982" elapsed="1.545549"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Login">Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
