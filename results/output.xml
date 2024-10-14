@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.0 on win32)" generated="2024-10-13T23:44:28.526783" rpa="false" schemaversion="5">
+<suite id="s1" name="Post" source="C:\Users\sandr\Downloads\cristian\QACoders\Academy\Robot-API\post.robot">
+<test id="s1-t1" name="Imprimir nome no terminal" line="13">
+<kw name="Imprimir nome">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-13T23:44:28.547656" elapsed="0.000997"/>
+</kw>
+<status status="PASS" start="2024-10-13T23:44:28.547656" elapsed="0.001439"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-13T23:44:28.549682" level="INFO">Olá Cristian Eisenhut, seja bem vindo ao dojo Robot</msg>
+<msg time="2024-10-13T23:44:28.549682" level="INFO">${msg} = None</msg>
+<var>${msg}</var>
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-13T23:44:28.549095" elapsed="0.000587"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<arg>Olá Cristian Eisenhut, seja bem vindo ao dojo Robot</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-10-13T23:44:28.549682" elapsed="0.000000"/>
+</kw>
+<tag>regressivo</tag>
+<tag>test1</tag>
+<status status="PASS" start="2024-10-13T23:44:28.547656" elapsed="0.002026"/>
+</test>
+<test id="s1-t2" name="Imprimir nome no terminal2" line="19">
+<kw name="Imprimir nome">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-10-13T23:44:28.550684" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-10-13T23:44:28.550684" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-13T23:44:28.550684" level="INFO">Olá Cristian Eisenhut, seja bem vindo ao dojo Robot</msg>
+<msg time="2024-10-13T23:44:28.550684" level="INFO">${msg} = None</msg>
+<var>${msg}</var>
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-13T23:44:28.550684" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>Olá ${name}, seja bem vindo ao dojo Robot</arg>
+<arg>Olá Cristian Eisenhut, seja bem vindo ao dojo Robot</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-10-13T23:44:28.551682" elapsed="0.000000"/>
+</kw>
+<tag>regressivo</tag>
+<tag>test2</tag>
+<status status="PASS" start="2024-10-13T23:44:28.550684" elapsed="0.001995"/>
+</test>
+<doc>Teste Projeto</doc>
+<status status="PASS" start="2024-10-13T23:44:28.527783" elapsed="0.025737"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">regressivo</stat>
+<stat pass="1" fail="0" skip="0">test1</stat>
+<stat pass="1" fail="0" skip="0">test2</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Post">Post</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
