@@ -26,7 +26,7 @@ jobs:
 
     - name: Run Robot Frameworks testes
       run:  |
-        robot -d  api/api/testes/crud.robot
+        robot  api/api/testes/crud.robot
     - name: Arquive Robot Framework results #Salvar resultados
       if: ${{always() }}
       uses: actions/upload-artifact@v3
