@@ -19,6 +19,10 @@ jobs:
         pip install robotframework
         pip install robotframework-requests
         pip install robotframework-faker
+        python3 -m pip install robotframework-seleniumlibrary
+        python -m pip install robotframework-seleniumlibrary
+        pip install --upgrade robotframework-seleniumlibrary
+        pip3 install --upgrade robotframework-seleniumlibrary
 
     - name: Run Robot Frameworks testes
       run:  |
