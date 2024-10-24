@@ -2,7 +2,7 @@ name: Robot Framework Testes API
 on: push
 jobs:
   test:
-    name: Run Testes
+    name: Run testes
     runs-on: ubuntu-latest
 
     steps:
