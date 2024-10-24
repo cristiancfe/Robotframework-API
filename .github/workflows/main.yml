@@ -21,7 +21,7 @@ jobs:
 
     - name: Run Robot Frameworks testes
       run:  |
-        robot -d results Robot-API/api/testes>  
+        robot -d results api/testes>  
 
     - name: Arquive Robot Framework results #Salvar resultados
       if: ${{always() }}
