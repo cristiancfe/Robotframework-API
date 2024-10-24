@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run:  |
         pip install robotframework
-        pip instal robotframework-requests
+        pip install robotframework-requests
 
     - name: Run Robot Frameworks testes
       run:  |
