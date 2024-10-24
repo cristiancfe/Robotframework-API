@@ -21,7 +21,7 @@ jobs:
 
     - name: Run Robot Frameworks testes
       run:  |
-        robot -d results testes
+        robot -d crud  testes/crud.robot
 
     - name: Arquive Robot Framework results #Salvar resultados
       if: ${{always() }}
